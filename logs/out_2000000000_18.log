@@ -1,0 +1,133 @@
+debugnonce_start:  2000000000
+Mining block template, height 827344...
+header:  b'\x00\x00\x00 R\x99p\x9d\x0c\x03\xdb\xf9\x1f\x81\x13\x9e\xf9\xf3\xa5\xe5-\xdd\x18\x9d!\xb4\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xc3\xc9\x85G\xb1M\x8ax7\xef\xff\xdd\xdbYq\xf9\xd2,\x08!e\x0b\x033\x9d\xb0\xc6\x1b\x9b\x80\xcem\xa2\xa1\xb2eZ\x00\x04\x17\x00\x00\x00\x00'
+2000000000   720729f177334307250c23c223300de2d8c6e6c693b0abee981f4d73c3d15491   00000000000000000004005a0000000000000000000000000000000000000000
+2001000000   9dbcb04c18f18a7834ea96987b76088d567674d6a396cbc08b65c8ddb36c21e5   00000000000000000004005a0000000000000000000000000000000000000000
+2002000000   5b949c8d88e477aa841fc702334a6ff59b565937f0955759c4d9915632270a31   00000000000000000004005a0000000000000000000000000000000000000000
+2003000000   8b1a616b62d8b37dd892c42847e5cd1ebb8cfc879717287c611fd97dafce44e4   00000000000000000004005a0000000000000000000000000000000000000000
+2004000000   b131c6325016fbf1398f0905def8a2e37456dba187248a61b1eaa5294ceae158   00000000000000000004005a0000000000000000000000000000000000000000
+2005000000   7fa86d76a902fde162f75a02e2d993e23682fcfac1183eb0b08a57f4f45f60e4   00000000000000000004005a0000000000000000000000000000000000000000
+2006000000   7056f9e0ce7a96f74e21ca261519c62efb5392c622207a9421be51f04d81ad74   00000000000000000004005a0000000000000000000000000000000000000000
+2007000000   caa6a7856206dbd819c3a6746826d9070df502770bf618fbb109a768b3aa2b92   00000000000000000004005a0000000000000000000000000000000000000000
+2008000000   0b5b555f1d344319fd803d44bf65afcbf26310696a42be482be99094c0823f63   00000000000000000004005a0000000000000000000000000000000000000000
+2009000000   e88295b5b502e473d0bd8972be03cd273b10fe915749ea4614b9a9b18f9eebd3   00000000000000000004005a0000000000000000000000000000000000000000
+2010000000   78533828358dc78fc84505e4b6fc70a178979fc53cbb5939da5042021a65663f   00000000000000000004005a0000000000000000000000000000000000000000
+2011000000   7903b31f621363a4bdbd6050e0c1f88a2fd470384047eb024f875f80b901af45   00000000000000000004005a0000000000000000000000000000000000000000
+2012000000   43471912feae3503a17323f4c73e15f02b2fd98d355c92ba56c127af391e24fd   00000000000000000004005a0000000000000000000000000000000000000000
+2013000000   ad9e5331815d6e15926de783180466d83b618c92600c20998d7e98b81e7f4ced   00000000000000000004005a0000000000000000000000000000000000000000
+2014000000   e4e6fe6034a0db46031928e00a6d63e524cf0afe0724761ce67367d52257d667   00000000000000000004005a0000000000000000000000000000000000000000
+2015000000   7d31d9b6b9542e776da6bc19b301ee27d6b6cf3d705ccba0f2df4f1fd310ce4d   00000000000000000004005a0000000000000000000000000000000000000000
+2016000000   3f38f4a00292972b623737f559d19a57e13a8ef37b1046ad278d884ce71c21b5   00000000000000000004005a0000000000000000000000000000000000000000
+2017000000   cfcb7737e7dd90308c64a20e70efda6df5b89d567a0cfd277cba3e2934e25c08   00000000000000000004005a0000000000000000000000000000000000000000
+2018000000   7f30b1ea7f3e151a8ea750cd57ef5b081e59a9b0443a3b2cda85ca379edea9da   00000000000000000004005a0000000000000000000000000000000000000000
+2019000000   a2e7f296f2698a52173a8b01bc42f0bccd1767777f92ade49db3147c23d58b18   00000000000000000004005a0000000000000000000000000000000000000000
+2020000000   8ad224e8dcd325effbd11c7081f247d73f38863d33b3d9ee1cc7b274bc4f0ff8   00000000000000000004005a0000000000000000000000000000000000000000
+2021000000   89a2fdb60a918579479f01cf52e22a03a2cf1d451ddd853625cc356aa1ce40ea   00000000000000000004005a0000000000000000000000000000000000000000
+2022000000   6ff113c6d1e789873f1ab35fe4bf186d6ccaaedaa1cca8b0adf420c23a080eda   00000000000000000004005a0000000000000000000000000000000000000000
+2023000000   d8518cea1720fef8307745227be43285ac842a131bebf9d0ee9e3a9b2a5cacf3   00000000000000000004005a0000000000000000000000000000000000000000
+new_height:  827345
+debugnonce_start:  2000000000
+Mining block template, height 827345...
+header:  b'\x00\x00\x00 3\xeeH\xa5`\x1dp\xdc\xdaYl\x9f\x94^\\\xe08{h\x16B\xd1\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00T\xdd"\x01V\xc3S\x0b\xb7\xe9\x95N\x1b\xc7Wrk\xbcQ\x95\xc5\xc7\x01\xf8P\xcds\x1fM\x10|\x92\x89\xa2\xb2eZ\x00\x04\x17\x00\x00\x00\x00'
+2000000000   710ab2575dc5a13c2aaaed4eec592b00d1cdeed7f3a6e18dc2606e2701d1e2d4   00000000000000000004005a0000000000000000000000000000000000000000
+2001000000   2bf38155b36dfb6ef389f6833e1819af1aa4fb7f56094c73f1ae156d664aac4d   00000000000000000004005a0000000000000000000000000000000000000000
+2002000000   9a91c28663c33080c7c288b7219d8fa87c258d292f98f3876873b2fa00eddfa7   00000000000000000004005a0000000000000000000000000000000000000000
+2003000000   a794d7558f8f22beae19b713b97df3399b28beb4d237e965b9fbdee10afc58d0   00000000000000000004005a0000000000000000000000000000000000000000
+2004000000   7d3eb60fb73c6179dd3574fb61caa07c0a8700377c458010991bcad69a7066ee   00000000000000000004005a0000000000000000000000000000000000000000
+2005000000   830b148b6eabc7c6144ec3f55bfee7b7a2cf0ae175c9045feb5d7acabe854fd0   00000000000000000004005a0000000000000000000000000000000000000000
+2006000000   094c93bb40aca88342aa5a42fb07feeda2feb8f107e571f8be6d40f444340e91   00000000000000000004005a0000000000000000000000000000000000000000
+2007000000   515e4a5d61d6bfdeed93c5b1e8d42a64bd7d06f2693fa7b6e475f654fbd74dcb   00000000000000000004005a0000000000000000000000000000000000000000
+2008000000   0fef9ae21237b4d5ca9a48b844ec7e4794df51e32a4bb39c6622262495dc0991   00000000000000000004005a0000000000000000000000000000000000000000
+2009000000   e38bc8798924d65d6d7a825b1008a3f90d2f411b8fa0812ce9765cfb02a412b3   00000000000000000004005a0000000000000000000000000000000000000000
+2010000000   be08a45909a7e6a736fd2228ceb37aedd9a7ebb9ceaba0de1f766054e7de1fd3   00000000000000000004005a0000000000000000000000000000000000000000
+2011000000   3efb45a4f3b103ed13f9f4419ef84c135b2aaf3349207da6541238e74f9a6917   00000000000000000004005a0000000000000000000000000000000000000000
+2012000000   297fc3fcc09fb8a98f8b97259228fe7f3bce9e3d11825ecc5e57767c731f8182   00000000000000000004005a0000000000000000000000000000000000000000
+2013000000   5931d9791bb4fb6e0edafabfd0dc15422ab0b2aa8683d6a21741cc864599388f   00000000000000000004005a0000000000000000000000000000000000000000
+2014000000   3892e91c0f033e1a354054eee53bf927585cc8e53db1e7e7dcbf0851db2e2e7f   00000000000000000004005a0000000000000000000000000000000000000000
+2015000000   c1e7b2204648c41cac362fc6ec05655580addd53662ae851407716dbb39d0f26   00000000000000000004005a0000000000000000000000000000000000000000
+2016000000   ccc0fd8006889367d98cdc1ae4f21c0fb33a4fa691b4e774b35e38e66d075af5   00000000000000000004005a0000000000000000000000000000000000000000
+2017000000   885aed3939f82e1109192d64405dccbbdf6e9b592b50f22acf7e6cabedc0221e   00000000000000000004005a0000000000000000000000000000000000000000
+new_height:  827346
+Traceback (most recent call last):
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+           ^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/network.py", line 336, in _receive_data_on_socket
+    raise OSError("connection closed")
+OSError: connection closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 573, in <module>
+    standalone_miner(sys.argv[1].encode().hex(), sys.argv[2], int(sys.argv[3]) )
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 549, in standalone_miner
+    block_template = rpc_getblocktemplate()
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 82, in rpc_getblocktemplate
+    data = m.read("blocktemplate", {"_id":1})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/db.py", line 18, in read
+    for d in data:
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+                           ^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/cursor.py", line 1179, in _refresh
+    self.__send_message(q)
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1526, in _retryable_read
+    with self._conn_from_server(read_pref, server, session) as (
+  File "/Users/sreenath/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1324, in _conn_from_server
+    with self._checkout(server, session) as conn:
+  File "/Users/sreenath/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1246, in _checkout
+    with server.checkout(handler=err_handler) as conn:
+  File "/Users/sreenath/anaconda3/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 1598, in checkout
+    conn = self._get_conn(handler=handler)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 1714, in _get_conn
+    conn = self.connect(handler=handler)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 1563, in connect
+    conn.hello()
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 778, in hello
+    return self._hello(None, None, None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 822, in _hello
+    doc = self.command("admin", cmd, publish_events=False, exhaust_allowed=awaitable)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 960, in command
+    self._raise_connection_failure(error)
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 1134, in _raise_connection_failure
+    _raise_connection_failure(self.address, error)
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/pool.py", line 406, in _raise_connection_failure
+    raise AutoReconnect(msg) from error
+pymongo.errors.AutoReconnect: localhost:27017: connection closed

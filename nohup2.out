@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 568, in <module>
+    standalone_miner(sys.argv[1].encode().hex(), sys.argv[2], int(sys.argv[3]) )
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 538, in standalone_miner
+    block_template = rpc_getblocktemplate()
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/ntgbtminer.py", line 81, in rpc_getblocktemplate
+    data = m.read("blocktemplate", {"_id":1})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/Documents/bitcoin_code/ntgbtminer/db.py", line 18, in read
+    for d in data:
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+                           ^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/cursor.py", line 1153, in _refresh
+    self.__session = self.__collection.database.client._ensure_session()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1868, in _ensure_session
+    return self.__start_session(True, causal_consistency=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1811, in __start_session
+    self._topology._check_implicit_session_support()
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 583, in _check_implicit_session_support
+    self._check_session_support()
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 599, in _check_session_support
+    self._select_servers_loop(
+  File "/Users/sreenath/anaconda3/lib/python3.11/site-packages/pymongo/topology.py", line 269, in _select_servers_loop
+    raise ServerSelectionTimeoutError(
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: connection closed, Timeout: 30s, Topology Description: <TopologyDescription id: 65b29f98740499dc1a713112, topology_type: Unknown, servers: [<ServerDescription ('localhost', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('localhost:27017: connection closed')>]>
