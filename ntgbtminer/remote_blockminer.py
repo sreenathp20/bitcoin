@@ -18,7 +18,6 @@ import random
 import time
 import os
 import sys
-from db import MongoDb
 import random
 from urllib.request import urlopen
 from urllib import parse, request
