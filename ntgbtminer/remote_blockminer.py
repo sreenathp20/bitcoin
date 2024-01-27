@@ -34,13 +34,16 @@ API_URL = os.environ.get("API_URL", "http://192.168.18.13:8000")
 def api_method(method,data={},type='get'):
     # print("method:", method)
     # print("type:", type)
-    data = parse.urlencode(data).encode()
-    if type == 'get':
-        with urlopen(API_URL+'/'+method+'/') as response:
-            body = response.read()   
-    elif type == 'post':
-        req =  request.Request(API_URL+'/'+method+'/', data=data) # this will make the method "POST"
-        body = request.urlopen(req).read()
+    try:
+        data = parse.urlencode(data).encode()
+        if type == 'get':
+            with urlopen(API_URL+'/'+method+'/') as response:
+                body = response.read()   
+        elif type == 'post':
+            req =  request.Request(API_URL+'/'+method+'/', data=data) # this will make the method "POST"
+            body = request.urlopen(req).read()
+    except:
+        body = api_method(method, data, type)
     
     response = json.loads(body)
     #print("response:", response)
@@ -66,8 +69,8 @@ def rpc_getmininginfo():
         return {}
 
 
-def rpc_submitblock(block_submission, block_hash):
-    return rpc("submitblock", [block_submission])
+# def rpc_submitblock(block_submission, block_hash):
+#     return rpc("submitblock", [block_submission])
 
 
 ################################################################################

@@ -79,11 +79,11 @@ def rpc(method, params=None):
 def rpc_getblocktemplate():
     try:
         m = MongoDb()
-        data = m.read("blocktemplate", {"_id":1})
+        data = m.read("blocktemplate", {})
         if len(data) > 0:
             return data[0]
         out = rpc("getblocktemplate", [{"rules": ["segwit"]}])
-        out["_id"] = 1        
+        #out["_id"] = 1        
         in_data = [out]
         m = MongoDb()
         m.insertMany("blocktemplate", in_data)

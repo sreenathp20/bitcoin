@@ -58,14 +58,15 @@ def user(request):
 def read_blocktemplate(request):
     try:
         m = MongoDb()
-        data = m.read("blocktemplate", {"_id":1})
-        return JsonResponse(data)
+        data = m.read("blocktemplate", {})
+        return JsonResponse(data, safe=False)
     except ValueError:
-        return JsonResponse({})
+        return JsonResponse({}, safe=False)
     
 def delete_blocktemplate(request):
     try:
         m = MongoDb()
+        print("delete_blocktemplate")
         m.delete("blocktemplate", {})
         return JsonResponse({})
     except ValueError:
@@ -74,12 +75,14 @@ def delete_blocktemplate(request):
 def getblocktemplate(request):
     try:
         m = MongoDb()
-        data = m.read("blocktemplate", {"_id":1})
+        data = m.read("blocktemplate", {})
         if len(data) > 0:
+            print("data:", len(data))
             #return JsonResponse({'foo':'bar'})
-            return JsonResponse(data[0])
+            #del data[0]["_id"]
+            return JsonResponse(data[0], safe=False)
         out = rpc("getblocktemplate", [{"rules": ["segwit"]}])
-        out["_id"] = 1        
+        #out["_id"] = 1        
         in_data = [out]
         m = MongoDb()
         m.insertMany("blocktemplate", in_data)
