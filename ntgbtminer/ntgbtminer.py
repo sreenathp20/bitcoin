@@ -93,10 +93,13 @@ def rpc_getblocktemplate():
     except ValueError:
         return {}
 
-def rpc_getmininginfo():    
-    out = os.popen("bitcoin-cli -rpcuser="+RPC_USER+" -rpcpassword="+RPC_PASS+" getmininginfo").read()
-    #print("out:", out)
-    json_out = json.loads(out)
+def rpc_getmininginfo():
+    try:  
+        out = os.popen("bitcoin-cli -rpcuser="+RPC_USER+" -rpcpassword="+RPC_PASS+" getmininginfo").read()
+        #print("out:", out)
+        json_out = json.loads(out)
+    except:
+        return rpc_getmininginfo()
     return json_out
 
 

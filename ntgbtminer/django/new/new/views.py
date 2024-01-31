@@ -28,17 +28,20 @@ def rpc(method, params=None):
     Returns:
         object: RPC response result.
     """
-    print("RPC_URL:", RPC_URL)
-    print("RPC_USER:", RPC_USER)
-    print("RPC_PASS:", RPC_PASS)
-    rpc_id = random.getrandbits(32)
-    data = json.dumps({"id": rpc_id, "method": method, "params": params}).encode()
-    auth = base64.encodebytes((RPC_USER + ":" + RPC_PASS).encode()).decode().strip()
+    try:
+        print("RPC_URL:", RPC_URL)
+        print("RPC_USER:", RPC_USER)
+        print("RPC_PASS:", RPC_PASS)
+        rpc_id = random.getrandbits(32)
+        data = json.dumps({"id": rpc_id, "method": method, "params": params}).encode()
+        auth = base64.encodebytes((RPC_USER + ":" + RPC_PASS).encode()).decode().strip()
 
-    request = urllib.request.Request(RPC_URL, data, {"Authorization": "Basic {:s}".format(auth)})
+        request = urllib.request.Request(RPC_URL, data, {"Authorization": "Basic {:s}".format(auth)})
 
-    with urllib.request.urlopen(request) as f:
-        response = json.loads(f.read())
+        with urllib.request.urlopen(request) as f:
+            response = json.loads(f.read())
+    except:
+        return rpc(method, params)
 
     if response['id'] != rpc_id:
         raise ValueError("Invalid response id: got {}, expected {:u}".format(response['id'], rpc_id))
@@ -96,9 +99,12 @@ def getblocktemplate(request):
         return JsonResponse({}, safe=False)
     
 def rpc_getmininginfo():    
-    out = os.popen("bitcoin-cli -rpcuser="+RPC_USER+" -rpcpassword="+RPC_PASS+" getmininginfo").read()
-    #print("out:", out)
-    json_out = json.loads(out)
+    try:
+        out = os.popen("bitcoin-cli -rpcuser="+RPC_USER+" -rpcpassword="+RPC_PASS+" getmininginfo").read()
+        #print("out:", out)
+        json_out = json.loads(out)
+    except:
+        return rpc_getmininginfo()
     return json_out
     
 def getmininginfo(request):
