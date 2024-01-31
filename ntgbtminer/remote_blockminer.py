@@ -30,19 +30,19 @@ from urllib import parse, request
 
 API_URL = os.environ.get("API_URL", "http://192.168.18.13:8000")
 
-def api_method(method,data={},type='get'):
+def api_method(method,data={},typ='get'):
     # print("method:", method)
-    # print("type:", type)
+    # print("typ:", typ)
     try:
         data = parse.urlencode(data).encode()
-        if type == 'get':
+        if typ == 'get':
             with urlopen(API_URL+'/'+method+'/') as response:
                 body = response.read()   
-        elif type == 'post':
+        elif typ == 'post':
             req =  request.Request(API_URL+'/'+method+'/', data=data) # this will make the method "POST"
             body = request.urlopen(req).read()
     except:
-        body = api_method(method, data, type)
+        body = api_method(method, data, typ)
     
     response = json.loads(body)
     #print("response:", response)
