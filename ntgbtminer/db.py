@@ -97,7 +97,7 @@ class MongoDb:
     def delete(self, collection, query):
         try:
             col = self.db[collection]
-            col.delete_one(query)
+            col.delete_many(query)
         except:
             self.delete(collection, query)
         self.db_client.close()

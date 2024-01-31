@@ -27,7 +27,7 @@ import random
 # This will be particular to your local ~/.bitcoin/bitcoin.conf
 
 RPC_URL = os.environ.get("RPC_URL", "http://127.0.0.1:8332")
-RPC_USER = os.environ.get("RPC_USER", "sree")
+RPC_USER = os.environ.get("RPC_USER", "admin")
 RPC_PASS = os.environ.get("RPC_PASS", "admin")
 
 ################################################################################
@@ -46,17 +46,19 @@ def rpc(method, params=None):
     Returns:
         object: RPC response result.
     """
-    print("RPC_URL:", RPC_URL)
-    print("RPC_USER:", RPC_USER)
-    print("RPC_PASS:", RPC_PASS)
-    rpc_id = random.getrandbits(32)
-    data = json.dumps({"id": rpc_id, "method": method, "params": params}).encode()
-    auth = base64.encodebytes((RPC_USER + ":" + RPC_PASS).encode()).decode().strip()
+    try:
+        print("RPC_URL:", RPC_URL)
+        print("RPC_USER:", RPC_USER)
+        print("RPC_PASS:", RPC_PASS)
+        rpc_id = random.getrandbits(32)
+        data = json.dumps({"id": rpc_id, "method": method, "params": params}).encode()
+        auth = base64.encodebytes((RPC_USER + ":" + RPC_PASS).encode()).decode().strip()
 
-    request = urllib.request.Request(RPC_URL, data, {"Authorization": "Basic {:s}".format(auth)})
-
-    with urllib.request.urlopen(request) as f:
-        response = json.loads(f.read())
+        request = urllib.request.Request(RPC_URL, data, {"Authorization": "Basic {:s}".format(auth)})
+        with urllib.request.urlopen(request) as f:
+            response = json.loads(f.read())
+    except:
+        return rpc(method, params)
 
     if response['id'] != rpc_id:
         raise ValueError("Invalid response id: got {}, expected {:u}".format(response['id'], rpc_id))
@@ -490,6 +492,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
             block_hash = block_compute_raw_hash(block_header)
             if nonce % 1000000 == 0:
                 print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
+            if nonce % 5000000 == 0:
                 mininginfo = rpc_getmininginfo()
 
                 new_height = int(mininginfo['blocks']) + 1

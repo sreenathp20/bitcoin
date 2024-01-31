@@ -454,19 +454,20 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
             block_hash = block_compute_raw_hash(block_header)
             if nonce % 1000000 == 0:
                 print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
-                mininginfo = rpc_getmininginfo()
+                if nonce % 5000000 == 0:
+                    mininginfo = rpc_getmininginfo()
 
-                new_height = int(mininginfo['blocks']) + 1
-                
-                if height != new_height:
-                    data = api_method('read_blocktemplate')
-                    if len(data) > 0:
-                        d = data[0]
-                        if d['height'] == height:
-                            api_method('delete_blocktemplate')
-                            
-                    print("new_height: ", new_height)
-                    return (None, None, None)
+                    new_height = int(mininginfo['blocks']) + 1
+                    
+                    if height != new_height:
+                        data = api_method('read_blocktemplate')
+                        if len(data) > 0:
+                            d = data[0]
+                            if d['height'] == height:
+                                api_method('delete_blocktemplate')
+                                
+                        print("new_height: ", new_height)
+                        return (None, None, None)
 
             
             # if nonce > 2:

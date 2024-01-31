@@ -13,7 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 RPC_URL = os.environ.get("RPC_URL", "http://127.0.0.1:8332")
-RPC_USER = os.environ.get("RPC_USER", "sree")
+RPC_USER = os.environ.get("RPC_USER", "admin")
 RPC_PASS = os.environ.get("RPC_PASS", "admin")
 
 
@@ -79,16 +79,21 @@ def getblocktemplate(request):
         if len(data) > 0:
             print("data:", len(data))
             #return JsonResponse({'foo':'bar'})
-            #del data[0]["_id"]
+            if "_id" in data[0]:
+                del data[0]["_id"]
+            print("data[0]:", data[0].keys())
             return JsonResponse(data[0], safe=False)
         out = rpc("getblocktemplate", [{"rules": ["segwit"]}])
         #out["_id"] = 1        
         in_data = [out]
         m = MongoDb()
         m.insertMany("blocktemplate", in_data)
-        return JsonResponse(out)
+        if "_id" in out:
+                del out["_id"]
+        print("out:", out.keys())
+        return JsonResponse(out, safe=False)
     except ValueError:
-        return JsonResponse({})
+        return JsonResponse({}, safe=False)
     
 def rpc_getmininginfo():    
     out = os.popen("bitcoin-cli -rpcuser="+RPC_USER+" -rpcpassword="+RPC_PASS+" getmininginfo").read()

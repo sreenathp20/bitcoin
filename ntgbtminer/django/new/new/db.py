@@ -20,7 +20,7 @@ class MongoDb:
                 del d["_id"]
                 res.append(d)
         except:
-            self.read(collection, query)
+            res = self.read(collection, query)
         self.db_client.close()
         return res
 
@@ -98,7 +98,7 @@ class MongoDb:
     def delete(self, collection, query):
         try:
             col = self.db[collection]
-            col.delete_one(query)
+            col.delete_many(query)
         except:
             self.delete(collection, query)
         self.db_client.close()
