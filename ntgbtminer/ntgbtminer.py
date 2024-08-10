@@ -338,7 +338,7 @@ def block_make_header(block):
     header += bytes.fromhex(block['bits'])[::-1]
     # Nonce
     header += struct.pack("<L", block['nonce'])
-    print("header: ", header)
+    #print("header: ", header)
     return header
 
 def insertToDb(height, block_hash, target_hash, nonce, extranonce):
@@ -464,7 +464,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
     extranonce = random.randrange(1,0xffffffff)
     while extranonce <= 0xffffffff:
         # Update the coinbase transaction with the new extra nonce
-        coinbase_script = coinbase_message + int2lehex(extranonce, 4)
+        coinbase_script = coinbase_message + int2lehex(extranonce, 8)
         coinbase_tx['data'] = tx_make_coinbase(coinbase_script, address, block_template['coinbasevalue'], block_template['height'])
         coinbase_tx['hash'] = tx_compute_hash(coinbase_tx['data'])
         # print("coinbase_tx:", coinbase_tx)
@@ -489,12 +489,13 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
         nonce = 0 if not debugnonce_start else debugnonce_start
         while nonce <= 0xffffffff:
             # Update the block header with the new 32-bit nonce
-            block_header = block_header[0:76] + nonce.to_bytes(8, byteorder='little')
+            block_header = block_header[0:76] + nonce.to_bytes(4, byteorder='little')
             
             # Recompute the block hash
             block_hash = block_compute_raw_hash(block_header)
             if nonce % 1000000 == 0:
-                print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
+                #print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
+                pass
             if nonce % 5000000 == 0:
                 mininginfo = rpc_getmininginfo()
 
@@ -502,7 +503,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                 
                 if height != new_height:
                     m = MongoDb()
-                    data = m.read("blocktemplate", {"_id":1})
+                    data = m.read("blocktemplate", {})
                     if len(data) > 0:
                         d = data[0]
                         if d['height'] == height:

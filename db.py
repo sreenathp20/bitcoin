@@ -11,17 +11,51 @@ class MongoDb:
         self.db = self.db_client[self.DATABASE]
         pass
 
+    def read(self, collection, query):
+        try:
+            col = self.db[collection]
+            data = col.find(query)
+            res = []
+            for d in data:
+                res.append(d)
+        except:
+            res = self.read(collection, query)
+        self.db_client.close()
+        return res
+    
+    
+    
+    def readWithLimit(self, collection, query, skip):
+        try:
+            col = self.db[collection]
+            data = col.find(query).limit(100).skip(skip)
+            res = []
+            for d in data:
+                res.append(d)
+        except:
+            res = self.read(collection, query)
+        self.db_client.close()
+        return res
+
     def insertMany(self, collection, data):
-        col = self.db[collection]
-        col.insert_many(data)
+        try:
+            col = self.db[collection]
+            col.insert_many(data)
+        except:
+            print("Error")
+            self.insertMany(collection, data)
+        self.db_client.close()
 
     def readAll(self, collection, start, end):
         #print("hello 123")
-        col = self.db[collection]
-        data = col.find({"date": {"$gte": start, "$lt": end}})
-        res = []
-        for d in data:
-            res.append(d)
+        try:
+            col = self.db[collection]
+            data = col.find({"date": {"$gte": start, "$lt": end}})
+            res = []
+            for d in data:
+                res.append(d)
+        except:
+            res = self.readAll(collection, start, end)
         return res
     
     def readAllBackTest(self, collection):
@@ -74,4 +108,12 @@ class MongoDb:
         for d in data:
             res.append(d)
         return res
+    
+    def delete(self, collection, query):
+        try:
+            col = self.db[collection]
+            col.delete_many(query)
+        except:
+            self.delete(collection, query)
+        self.db_client.close()
     

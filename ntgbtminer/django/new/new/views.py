@@ -10,6 +10,7 @@ import urllib.parse
 import base64
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from .binary import getBits
 
 
 RPC_URL = os.environ.get("RPC_URL", "http://127.0.0.1:8332")
@@ -54,6 +55,30 @@ def rpc(method, params=None):
 
 def index(request):
     return HttpResponse('Hello, welcome to the index page.')
+
+def onescount(request):
+    m = MongoDb()
+    data = m.read("block_binary", {})
+    return JsonResponse(data, safe=False)
+
+def block(request):
+    hash = "00000000000000000002393cd1853041010241871caedc6f8307588d49d8b1c5"
+    block_hedaer, version, previousblockhash, merkleroot, time, bits, nonce, res, height = getBits(hash)
+    data = {"block_hedaer": block_hedaer, "version": version, "previousblockhash": previousblockhash, "merkleroot": merkleroot, "time": time, "bits": bits, "nonce": nonce, "result": res, "height": height}
+    return JsonResponse(data, safe=False)
+
+def getPreviousblockhash(previousblockhash):
+    n = 2
+    previousblockhash_swap = "".join( [ previousblockhash[i:i+n] for i in range(0, len(previousblockhash), n) ][::-1] )
+    return previousblockhash_swap
+
+def blockbyhash(request, hash_swap):
+    hash = getPreviousblockhash(hash_swap)
+    print("hash ", getPreviousblockhash(hash_swap))
+    
+    block_hedaer, version, previousblockhash, merkleroot, time, bits, nonce, res, height = getBits(hash)
+    data = {"block_hedaer": block_hedaer, "version": version, "previousblockhash": previousblockhash, "merkleroot": merkleroot, "time": time, "bits": bits, "nonce": nonce, "result": res, "height": height}
+    return JsonResponse(data, safe=False)
 
 def user(request):
     return HttpResponse('Hi, this is where an individual post will be.')

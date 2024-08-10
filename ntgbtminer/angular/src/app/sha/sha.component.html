@@ -1,0 +1,71 @@
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;"></div>
+    <div class="example-button-row" >
+        <button mat-raised-button style="background-color:brown;color:aliceblue;" (click)="nextBlock(blocks[0].previousblockhash)">Next</button>
+    </div>
+</section>
+<section style="width: 100%;" *ngFor="let block of blocks;">
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Height</div>
+    <div class="example-button-row">
+      <button mat-raised-button style="width: 84px;padding: 0 3px 0 3px;">Version {{block.version.length}}</button>
+      <button mat-raised-button color="primary" style="width: 601px;">previousblockhash {{block.previousblockhash.length}}</button>
+      <button mat-raised-button color="accent" style="width: 607px;">merkleroot {{block.merkleroot.length}}</button>
+      <button mat-raised-button color="warn" style="width: 105px;">time {{block.time.length}}</button>
+      <button mat-raised-button style="width: 105px;">bits {{block.bits.length}}</button>
+      <button mat-raised-button color="primary" style="width: 105px;">nonce {{block.nonce.length}}</button>
+    </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">{{block.height}}</div>
+    <div class="example-button-row">
+        <button mat-raised-button style="padding: 0 3px 0 3px;">{{block.version}}</button>
+        <button mat-raised-button color="primary">{{block.previousblockhash}}</button>
+        <button mat-raised-button color="accent">{{block.merkleroot}}</button>
+        <button mat-raised-button color="warn">{{block.time}}</button>
+        <button mat-raised-button >{{block.bits}}</button>
+        <button mat-raised-button color="primary">{{block.nonce}}</button>
+      </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Message Block1</div>
+    <div class="example-button-row">
+        <button mat-raised-button>{{byteSplit(block.result[0].message_block.slice(0, block.version.length * 4))}} {{block.version.length * 4}}</button>
+        <button mat-raised-button color="primary" style="height: 54px;">{{byteSplit(block.result[0].message_block.slice(block.version.length * 4, ((block.version.length + block.previousblockhash.length) * 4)))}} {{block.previousblockhash.length * 4}}</button>
+        <button mat-raised-button color="accent" style="height: 54px;">{{byteSplit(block.result[0].message_block.slice((block.version.length + block.previousblockhash.length) * 4, ((block.version.length + block.previousblockhash.length+block.merkleroot.length) * 4)))}} {{block.merkleroot.length * 4}}</button>
+        <button mat-raised-button color="warn">{{byteSplit(block.result[0].message_block.slice((block.version.length + block.previousblockhash.length + block.merkleroot.length) * 4, ((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length) * 4)))}}</button>
+        <button mat-raised-button color="">{{byteSplit(block.result[0].message_block.slice((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length) * 4, ((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length + block.bits.length) * 4)))}}</button>
+        <button mat-raised-button color="primary">{{byteSplit(block.result[0].message_block.slice((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length + block.bits.length) * 4, ((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length + block.bits.length + block.nonce.length) * 4)))}}</button>
+        <button mat-raised-button color="" style="height: 75px;">{{byteSplit(block.result[0].message_block.slice((block.version.length + block.previousblockhash.length + block.merkleroot.length + block.time.length + block.bits.length + block.nonce.length) * 4))}}</button>
+    </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Out1</div>
+    <div class="example-button-row" >
+        <button mat-raised-button style="background-color: green;color: aliceblue;">{{byteSplit(block.result[0].out)}}</button>
+    </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Message Block2</div>
+    <div class="example-button-row" >
+        <button mat-raised-button style="height: 90px;">{{byteSplit(block.result[1].message_block)}}</button>
+    </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Out2</div>
+    <div class="example-button-row" >
+        <button mat-raised-button style="background-color: green;color: aliceblue;">{{byteSplit(block.result[1].out)}}</button>
+    </div>
+</section>
+<section style="width: 100%;">
+    <div class="example-label" style="width: 45px;min-width: auto;">Result</div>
+    <div class="example-button-row" >
+        <button mat-raised-button style="background-color:aqua;color:black;">{{byteSplit(block.result[2].out)}}</button>
+    </div>
+</section>
+<section style="width: 100%;height: 100px;" >
+    <div class="example-label" style="width: 45px;min-width: auto;"></div>
+    <div class="example-button-row" >
+    </div>
+</section>
+</section>

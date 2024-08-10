@@ -22,6 +22,18 @@ class MongoDb:
             res = self.read(collection, query)
         self.db_client.close()
         return res
+    
+    def readNonce1(self, collection, query):
+        try:
+            col = self.db[collection]
+            data = col.find(query).sort("nonce_1", 1)
+            res = []
+            for d in data:
+                res.append(d)
+        except:
+            res = self.readNonce1(collection, query)
+        self.db_client.close()
+        return res
 
     def insertMany(self, collection, data):
         try:

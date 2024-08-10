@@ -1,2 +1,6 @@
 logs/
 .DS_Store
+
+data1/
+venv/
+*.pyc

@@ -26,5 +26,8 @@ urlpatterns = [
     path('read_blocktemplate/', views.read_blocktemplate, name='read_blocktemplate'),
     path('delete_blocktemplate/', views.delete_blocktemplate, name='delete_blocktemplate'),
     path('mined_block/', views.mined_block, name='mined_block'),
-    path('submitblock/', views.submitblock, name='submitblock')
+    path('submitblock/', views.submitblock, name='submitblock'),
+    path('api/block/', views.block, name='block'),
+    path('api/blockbyhash/<str:hash_swap>', views.blockbyhash, name='blockbyhash'),
+    path('api/onescount/', views.onescount, name='onescount'),
 ]

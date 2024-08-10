@@ -25,7 +25,10 @@ SECRET_KEY = "django-insecure-l8!icqa_n#aipu*cy=eraro+%3q+h_t-mvc2x*(!s#l(0b(u_&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.18.13', 'yourhostname.local']
+#ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.18.13', 'localhost:4200']
+ALLOWED_HOSTS = ['*']
+
+CORS_ALLOW_HEADERS = ['*']
 
 
 # Application definition
@@ -37,11 +40,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -68,6 +74,20 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "new.wsgi.application"
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200"
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT"
+]
 
 
 # Database

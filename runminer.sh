@@ -1,6 +1,6 @@
 #!/bin/sh
 
-max=10
+max=4
 for i in `seq 1 $max`
 do
     #echo "$i"
