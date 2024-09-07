@@ -21,6 +21,7 @@ import sys
 from db import MongoDb
 import random
 from bitstring import BitArray
+import math
 
 
 
@@ -440,12 +441,23 @@ def getNonces(block_header_hex):
     ones = c.bin.count("1")
     data = getOnesFromDb(ones)
     if len(data) > 0:
-        nones_min = data[0]["nonce_1"]
-        nones_max = data[-1]["nonce_1"]
+        d = {}
+        for i in data:
+            if i['nonce_1'] in d:
+                d[ i['nonce_1'] ] += 1
+            else:
+                d[ i['nonce_1'] ] = 1
+        d2 = []
+        for k in d.keys():
+            d2.append({"nonce_1": k, "count": d[k]})
+        from operator import itemgetter
+        data = sorted(d2, key=itemgetter('count'), reverse=True)
+        maxl = 4 if len(data) > 4 else len(data)
+        data = data[:maxl]
+        nonce_values = [d['nonce_1'] for d in data]
     else:
-        nones_min = 0
-        nones_max = 0
-    return nones_min, nones_max
+        nonce_values = []
+    return nonce_values
 
 
 ################################################################################
@@ -488,7 +500,8 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
 
     # Initialize our running average of hashes per second
     hash_rate, hash_rate_count = 0.0, 0
-
+    max_hash = math.inf
+    pre_zeros = 0
     # Loop through the extranonce
     #extranonce = extranonce_start
     extranonce = random.randrange(1,0xffffffff)
@@ -513,14 +526,16 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
         # new_height = new_block_template['height']
         # if height != new_height:
         #     return (None, None, None)
-
+        m = MongoDb()
+        ze = m.read("max_zeros", {})
+        max_zeros = ze[0]['zeros']
         time_stamp = time.time()
 
-        nones_min, nones_max = getNonces(block_header[0:76].hex())  
+        nones_values = getNonces(block_header[0:76].hex())  
 
-        if nones_min > 0:    
+        if len(nones_values) > 0:  
 
-            for nones in range(nones_min, nones_max + 1):        
+            for nones in nones_values:        
                 from os import listdir
                 from os.path import isfile, join
                 datapath = "/Users/sreenath/Documents/bitcoin_code/data1"
@@ -528,11 +543,11 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                 onlyfiles = [f for f in listdir(dirpath)]
 
                 for file in onlyfiles:
-                    print("file: ", file)
+                    print("file: ", file, " ", pre_zeros)
                     mininginfo = rpc_getmininginfo()
 
                     new_height = int(mininginfo['blocks']) + 1
-                            
+                    
                     if height != new_height:
                         m = MongoDb()
                         data = m.read("blocktemplate", {})
@@ -542,17 +557,23 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                                 m = MongoDb()
                                 m.delete("blocktemplate", {})
                         print("new_height: ", new_height)
+                        if pre_zeros > max_zeros:
+                            m = MongoDb()
+                            m.update("max_zeros", {"_id":1}, { "$set": {"zeros": pre_zeros} })
                         return (None, None, None)        
 
                     filepath = dirpath + "/" + file
                     import json
                     from pprint import pprint
+                    try:
+                        with open(filepath) as json_data:
+                            d = json.load(json_data)           
 
-                    with open(filepath) as json_data:
-                        d = json.load(json_data)
                         json_data.close()
                         if type(d) == dict:
                             d = d[str(nones)]
+                    except:
+                        continue
 
                     for nonce_string in d:
                         nonce = int(nonce_string, 2)
@@ -568,7 +589,36 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                         # if nonce > 2:
                         #     time.sleep(5)
                         # Check if it the block meets the target hash
+                        int_block_hash = int.from_bytes(block_hash, "big")
+                        int_target_hash = int.from_bytes(target_hash, "big")
+                        if  int_block_hash < max_hash:
+                            max_hash = int_block_hash
+                            pre_zeros
+                            hex_block_hash = block_hash.hex()
+                            temp = 0
+                            for i in hex_block_hash:
+                                if i == '0':
+                                    temp += 1
+                                else:
+                                    break
+                            if temp > pre_zeros:
+                                pre_zeros = temp
+                            m = MongoDb()
+                            ze = m.read("max_zeros", {})
+                            max_zeros = ze[0]['zeros']
+                            if pre_zeros > max_zeros:
+                                max_zeros = pre_zeros
+                                m = MongoDb()
+                                m.update("max_zeros", {"_id":1}, { "$set": {"zeros": pre_zeros} })
+                            print( hex_block_hash, " ", target_hash.hex(), " ", " ", nonce_string, " ", pre_zeros)
+
                         if block_hash < target_hash:
+                            m = MongoDb()
+                            ze = m.read("max_zeros", {})
+                            max_zeros = ze[0]['zeros']
+                            if pre_zeros > max_zeros:
+                                m = MongoDb()
+                                m.update("max_zeros", {"_id":1}, { "$set": {"zeros": pre_zeros} })
                             block_template['nonce'] = nonce
                             block_template['hash'] = block_hash.hex()
                             insertToDb(height, block_hash.hex(), target_hash.hex(), nonce, extranonce)

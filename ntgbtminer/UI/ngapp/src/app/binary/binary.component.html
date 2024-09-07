@@ -1,0 +1,535 @@
+<!-- <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button> -->
+<div class="container" style="margin-left: 0px;max-width: 3000px;" *ngIf="loaded">
+    <div class="row"  style="margin-top: 2px;">
+            
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">INPUT</button>
+        </div>
+        <div class="col col-sm-11" style="">
+            <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{dividerCommon(data, 'input')}}</button>
+
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+            
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">INPUT BINARY</button>
+        </div>
+        <div class="col col-sm-11" style="">
+            <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{dividerCommon(data, 'input_binary')}}</button>
+
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+            
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">MESSAGE BLOCK</button>
+        </div>
+        <div class="col col-sm-11" style="">
+            <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{dividerCommon(data, 'message_block')}}</button>
+
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+            
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">SHA256 BINARY</button>
+        </div>
+        <div class="col col-sm-11" style="">
+            <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{dividerCommon(data, 'sha256_binary')}}</button>
+
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+        
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">SHA256</button>
+        </div>
+        <div class="col col-sm-6" style="">
+            <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{dividerCommon(data, 'sha256')}}</button>
+
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-success" (click)=toBinary()>Binary</button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" (click)=hexa()>Hexa</button>
+        </div>
+    </div>
+    <div class="container text-center" *ngFor="let d of data.slice(0, data.length-1); let currentElementIndex=index" style="margin-top: 10px;margin-left: 0px;
+    margin-right: 0px;
+    max-width: 3000px;">
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary">words</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">a</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">b</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">c</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">d</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">e</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">f</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">g</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">h</button>
+            </div>
+            <!-- <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">temp1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">temp2</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">Σ1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">Σ0</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">Choice</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">Majority</button>
+            </div> -->
+            
+            
+        </div>
+        <div class="row" *ngFor="let w of words[currentElementIndex]; let i=index;" style="margin-top: 0px;line-height: 0px;">
+            
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">{{i+1}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize">{{divider(w)}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['a'])}}</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['b'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['c'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['d'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['e'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['f'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['g'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['h'])}}</button>
+            </div>
+            <!-- <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['temp1'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['temp2'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['SIGMA1'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['SIGMA0'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['choice'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['majority'])}}</button>
+            </div> -->
+            
+        </div>
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary">words</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">a</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">b</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">c</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">d</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">e</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">f</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">g</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">h</button>
+            </div>
+            <!-- <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">temp1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">temp2</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">Σ1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">Σ0</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">Choice</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">Majority</button>
+            </div> -->
+            
+        </div>
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">temp1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">temp2</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">Σ1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">Σ0</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">Choice</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">Majority</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">K</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">ht - (ht-1)</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">(ht-1) + word = HW</button>
+            </div>
+            
+            
+            
+        </div>
+        <div class="row" *ngFor="let w of words[currentElementIndex]; let i=index;" style="margin-top: 0px;line-height: 0px;">
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">{{i+1}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['temp1'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['temp2'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['SIGMA1'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['SIGMA0'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['choice'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][i]['majority'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize">{{divider(data[data.length-1]['K'][i])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize" *ngIf="i > 0 && data[currentElementIndex]['wv'][i]['h_diff'] > 0">{{data[currentElementIndex]['wv'][i]['h_diff']}}</button>
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize" *ngIf="i > 0 && data[currentElementIndex]['wv'][i]['h_diff'] < 0">{{data[currentElementIndex]['wv'][i]['h_diff']}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="" >
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize" *ngIf="i > 0">{{divider(data[currentElementIndex]['wv'][i]['hplusword'])}}</button>
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize" *ngIf="i == 0"></button>
+            </div>
+            
+            
+            
+        </div>
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger">temp1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning">temp2</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info">Σ1</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark">Σ0</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary">Choice</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success">Majority</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">K</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">ht - (ht-1)</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">(ht-1) + word = HW</button>
+            </div>
+            
+            
+            
+        </div>
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">temp1-Σ1-choice-k</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">HWt - (HWt-1)</button>
+            </div>
+            
+            
+        </div>
+        <div class="row" *ngFor="let w of words[currentElementIndex]; let i=index;" style="margin-top: 0px;line-height: 0px;">
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">{{i+1}}</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize" >{{divider(data[currentElementIndex]['wv'][i]['t1_s1_ch_k'])}}</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize" *ngIf="i > 1 && data[currentElementIndex]['wv'][i]['hwdiff'] > 0">{{data[currentElementIndex]['wv'][i]['hwdiff']}}</button>
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize" *ngIf="i > 1 && data[currentElementIndex]['wv'][i]['hwdiff'] < 0">{{data[currentElementIndex]['wv'][i]['hwdiff']}}</button>
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize" *ngIf="i <= 1"></button>
+            </div>
+            
+            
+        </div>
+        <div class="row" >
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize">sl no</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">temp1-Σ1-choice-k</button>
+            </div>
+            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">HWt - (HWt-1)</button>
+            </div>
+            
+            
+        </div>
+        <div class="row"  style="margin-top: 2px;" *ngIf="currentElementIndex == 0">
+            
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize"></button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize">INITIAL HASH</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h0'])}}</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h1'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h2'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h3'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h4'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h5'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h6'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h7'])}}</button>
+            </div>
+        </div>
+        <div class="row"  style="margin-top: 2px;" *ngIf="currentElementIndex > 0">
+            
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize"></button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize">INITIAL HASH</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['a'])}}</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['b'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['c'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['d'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['e'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['f'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['g'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['initial_hash']['h'])}}</button>
+            </div>
+        </div>
+        <div class="row"  style="margin-top: 2px;">
+            
+            <div class="col col-sm-1" style="width: 1.333333%;">
+                <button type="button" class="btn btn-light btnfsize"></button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize">RESULT</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['a'])}}</button>
+
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['b'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-danger" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['c'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-warning" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['d'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['e'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-dark" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['f'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['g'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{divider(data[currentElementIndex]['wv'][64]['h'])}}</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+            
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">SHA256 BINARY</button>
+        </div>
+        <div class="col col-sm-11" style="">
+            <button type="button" class="btn btn-info" [class]="classButtonFontSize">{{dividerCommon(data, 'sha256_binary')}}</button>
+
+        </div>
+    </div>
+    <div class="row"  style="margin-top: 2px;">
+        
+        <div class="col col-sm-1" style="width: 1.333333%;">
+            <button type="button" class="btn btn-light btnfsize"></button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" [class]="classButtonFontSize">SHA256</button>
+        </div>
+        <div class="col col-sm-6" style="">
+            <button type="button" class="btn btn-success" [class]="classButtonFontSize">{{dividerCommon(data, 'sha256')}}</button>
+
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-success" (click)=toBinary()>Binary</button>
+        </div>
+        <div class="col col-sm-1 colb" style="">
+            <button type="button" class="btn btn-primary" (click)=hexa()>Hexa</button>
+        </div>
+    </div>
+    
+</div>

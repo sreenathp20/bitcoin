@@ -113,4 +113,12 @@ class MongoDb:
         except:
             self.delete(collection, query)
         self.db_client.close()
+
+    def update(self, collection, query, value):
+        try:
+            col = self.db[collection]
+            col.update_one(query, value)
+        except:
+            self.update(collection, query, value)
+        self.db_client.close()
     
