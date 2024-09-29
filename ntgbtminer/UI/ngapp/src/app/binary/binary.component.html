@@ -352,6 +352,9 @@
             <div class="col col-sm-1" style="width: 1.333333%;">
                 <button type="button" class="btn btn-light btnfsize">sl no</button>
             </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">(ht-1) + word = HW</button>
+            </div>
             
             <div class="col col-sm-1 colb" style="">
                 <button type="button" class="btn btn-light">temp1-Σ1-choice-k</button>
@@ -360,6 +363,12 @@
             <div class="col col-sm-1 colb" style="">
                 <button type="button" class="btn btn-light">HWt - (HWt-1)</button>
             </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">Σ</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">Σt - (Σt-1)</button>
+            </div>
             
             
         </div>
@@ -367,7 +376,10 @@
             <div class="col col-sm-1" style="width: 1.333333%;">
                 <button type="button" class="btn btn-light btnfsize">{{i+1}}</button>
             </div>
-            
+            <div class="col col-sm-1 colb" style="" >
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize" *ngIf="i > 0">{{divider(data[currentElementIndex]['wv'][i]['hplusword'])}}</button>
+                <button type="button" class="btn btn-secondary" [class]="classButtonFontSize" *ngIf="i == 0"></button>
+            </div>
             <div class="col col-sm-1 colb" style="">
                 <button type="button" class="btn btn-success" [class]="classButtonFontSize" >{{divider(data[currentElementIndex]['wv'][i]['t1_s1_ch_k'])}}</button>
             </div>
@@ -377,20 +389,34 @@
                 <button type="button" class="btn btn-danger" [class]="classButtonFontSize" *ngIf="i > 1 && data[currentElementIndex]['wv'][i]['hwdiff'] < 0">{{data[currentElementIndex]['wv'][i]['hwdiff']}}</button>
                 <button type="button" class="btn btn-info" [class]="classButtonFontSize" *ngIf="i <= 1"></button>
             </div>
-            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-primary" [class]="classButtonFontSize" >{{divider(data[currentElementIndex]['wv'][i]['SIGMA'])}}</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize" *ngIf="i > 0">{{divider(data[currentElementIndex]['wv'][i]['SIGMA_minus_SIGMA_1'])}}</button>
+                <button type="button" class="btn btn-info" [class]="classButtonFontSize" *ngIf="i == 0"></button>
+            </div>
             
         </div>
         <div class="row" >
             <div class="col col-sm-1" style="width: 1.333333%;">
                 <button type="button" class="btn btn-light btnfsize">sl no</button>
             </div>
-            
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">(ht-1) + word = HW</button>
+            </div>
             <div class="col col-sm-1 colb" style="">
                 <button type="button" class="btn btn-light">temp1-Σ1-choice-k</button>
             </div>
             
             <div class="col col-sm-1 colb" style="">
                 <button type="button" class="btn btn-light">HWt - (HWt-1)</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">Σ</button>
+            </div>
+            <div class="col col-sm-1 colb" style="">
+                <button type="button" class="btn btn-light">Σt - (Σt-1)</button>
             </div>
             
             

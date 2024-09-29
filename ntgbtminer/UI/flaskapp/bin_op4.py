@@ -138,6 +138,17 @@ def sha256():
             wv['choice'] = choice
             wv['SIGMA0'] = SIGMA0
             wv['majority'] = majority
+            x1 = add_binary_nums(wv['a'],wv['b'])
+            x2 = add_binary_nums(x1, wv['c'])
+            x3 = add_binary_nums(x2, wv['d'])
+            x4 = add_binary_nums(x3, wv['e'])
+            x5 = add_binary_nums(x4, wv['f'])
+            x6 = add_binary_nums(x5,wv['g'])
+            wv['SIGMA'] = add_binary_nums(x6,wv['h'])
+            if j > 0:
+                sigma_minus1 = message_schedule[i]['wv'][j-1]['SIGMA']
+                sigma_minus1_2scomplement = twosComplement(sigma_minus1)
+                wv['SIGMA_minus_SIGMA_1'] = add_binary_nums(sigma_minus1_2scomplement,wv['SIGMA'])
             s12scomplement = twosComplement(SIGMA1)
             choice2scomplement = twosComplement(choice)
             k2scomplement = twosComplement(k[j])

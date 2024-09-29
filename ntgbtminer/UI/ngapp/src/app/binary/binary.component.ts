@@ -96,6 +96,8 @@ export class BinaryComponent {
         }
         j += 1        
       }      
+      let ones = res.split("1").length - 1
+      //res += ' \n'+String(ones);
     }else if(this.number_system == 16){
       let places = 8
       let res2 = parseInt(w, 2).toString(16).toUpperCase();

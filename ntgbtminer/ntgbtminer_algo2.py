@@ -530,53 +530,9 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
         ze = m.read("max_zeros", {})
         max_zeros = ze[0]['zeros']
         time_stamp = time.time()
-
-        nones_values = getNonces(block_header[0:76].hex())  
-
-        if len(nones_values) > 0:  
-
-            for nones in nones_values:        
-                from os import listdir
-                from os.path import isfile, join
-                datapath = "/Users/sreenath/Documents/bitcoin_code/data1"
-                dirpath = datapath+"/"+str(nones)
-                onlyfiles = [f for f in listdir(dirpath)]
-
-                for file in onlyfiles:
-                    print("file: ", file, " ", pre_zeros)
-                    mininginfo = rpc_getmininginfo()
-
-                    new_height = int(mininginfo['blocks']) + 1
-                    
-                    if height != new_height:
-                        m = MongoDb()
-                        data = m.read("blocktemplate", {})
-                        if len(data) > 0:
-                            d = data[0]
-                            if d['height'] == height:
-                                m = MongoDb()
-                                m.delete("blocktemplate", {})
-                        print("new_height: ", new_height)
-                        if pre_zeros > max_zeros:
-                            m = MongoDb()
-                            m.update("max_zeros", {"_id":1}, { "$set": {"zeros": pre_zeros} })
-                        return (None, None, None)        
-
-                    filepath = dirpath + "/" + file
-                    import json
-                    from pprint import pprint
-                    try:
-                        with open(filepath) as json_data:
-                            d = json.load(json_data)           
-
-                        json_data.close()
-                        if type(d) == dict:
-                            d = d[str(nones)]
-                    except:
-                        continue
-
-                    for nonce_string in d:
-                        nonce = int(nonce_string, 2)
+        nonce = 0
+        while nonce <= 0xffffffff:
+                        
                         # Update the block header with the new 32-bit nonce
                         block_header = block_header[0:76] + nonce.to_bytes(4, byteorder='little')
                         
@@ -584,7 +540,8 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                         # Recompute the block hash
                         block_hash = block_compute_raw_hash(block_header)
                         
-
+                        if nonce % 1000000 == 0:
+                            print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
                         
                         # if nonce > 2:
                         #     time.sleep(5)
@@ -593,7 +550,6 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                         int_target_hash = int.from_bytes(target_hash, "big")
                         if  int_block_hash < max_hash:
                             max_hash = int_block_hash
-                            pre_zeros
                             hex_block_hash = block_hash.hex()
                             temp = 0
                             for i in hex_block_hash:
@@ -610,7 +566,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                                 max_zeros = pre_zeros
                                 m = MongoDb()
                                 m.update("max_zeros", {"_id":1}, { "$set": {"zeros": pre_zeros} })
-                            print( hex_block_hash, " ", target_hash.hex(), " ", " ", nonce_string, " ", pre_zeros)
+                            print( hex_block_hash, " ", target_hash.hex(), " ", " nonce: ", nonce, " ", pre_zeros)
 
                         if block_hash < target_hash:
                             m = MongoDb()
@@ -634,6 +590,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
                             # If our mine time expired, return none
                             if timeout and (time_stamp - time_start) > timeout:
                                 return (None, hash_rate)
+                        nonce += 1
         extranonce += 1
 
     # If we ran out of extra nonces, return none
