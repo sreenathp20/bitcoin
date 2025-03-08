@@ -487,6 +487,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
 
         # Loop through the nonce
         nonce = 0 if not debugnonce_start else debugnonce_start
+        print(nonce)
         while nonce <= 0xffffffff:
             # Update the block header with the new 32-bit nonce
             block_header = block_header[0:76] + nonce.to_bytes(4, byteorder='little')
@@ -494,7 +495,7 @@ def block_mine(block_template, coinbase_message, extranonce_start, address, time
             # Recompute the block hash
             block_hash = block_compute_raw_hash(block_header)
             if nonce % 1000000 == 0:
-                #print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
+                print(nonce, " ", block_hash.hex(), " ", target_hash.hex())
                 pass
             if nonce % 5000000 == 0:
                 mininginfo = rpc_getmininginfo()
