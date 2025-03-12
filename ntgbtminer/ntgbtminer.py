@@ -7,6 +7,14 @@
 # with a whole lot of spirit ;)
 #
 
+import subprocess
+import sys
+
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+install('pymongo')
+
 import urllib.request
 import urllib.error
 import urllib.parse
